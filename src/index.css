@@ -1,0 +1,189 @@
+/* --- VARIABLES MAESTRAS (Gris Elegante & Neón) --- */
+:root {
+  --bg-body: #090a0f;       /* Fondo oscuro ultra profundo */
+  --glass-bg: rgba(30, 35, 45, 0.7); /* Efecto cristal para tarjetas */
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --primary: #3b82f6;       /* Azul eléctrico principal */
+  --primary-glow: rgba(59, 130, 246, 0.4);
+  --secondary: #8b5cf6;     /* Violeta para acentos */
+  --text-main: #f8fafc;     
+  --text-muted: #94a3b8;    
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- ESTILOS BASE --- */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top center, #1e293b 0%, #090a0f 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal de todo el contenido */
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  text-align: center;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* --- BARRA DE BÚSQUEDA PROFESIONAL --- */
+.search-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 25px 35px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 60px;
+  width: 100%;
+  max-width: 850px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.search-input, .user-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-input { flex: 2; }
+.user-select { flex: 1; cursor: pointer; }
+
+.search-input:focus, .user-select:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+/* --- CUADRÍCULA DE TARJETAS --- */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.post-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  padding: 35px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centra contenido interno */
+  text-align: center;      /* Centra el texto */
+  transition: var(--transition);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.post-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: var(--primary);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-glow);
+}
+
+.post-card small {
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 0.7rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.post-card h4 {
+  font-size: 1.4rem;
+  margin: 10px 0 20px 0;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+
+.post-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+/* --- BOTONES Y PAGINACIÓN --- */
+.btn-detalle, .pagination-controls button {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-detalle:hover, .pagination-controls button:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+  filter: brightness(1.2);
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+/* --- VISTA DE DETALLE --- */
+.detail-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  padding: 60px;
+  border-radius: 32px;
+  max-width: 850px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+}
+
+.comment-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 18px;
+  margin-top: 20px;
+  text-align: left;
+  border-left: 4px solid var(--primary);
+}
